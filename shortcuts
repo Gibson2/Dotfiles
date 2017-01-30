@@ -1,0 +1,105 @@
+# Functions
+
+known_hosts() {
+    sed -i .bak -e $1d ~/.ssh/known_hosts
+}
+
+babel_c() {
+    babel $1.js -w --out-file $1.c.js
+}
+
+ruby() {
+	rvm use $1
+}
+
+
+# Alias
+alias boot='cd ~/Documents/Bootcamp/'
+alias tf='cd ~/Documents/Bootcamp/_trabajoFinal/A-B_Testing/'
+alias stf='subl ~/Documents/Bootcamp/_trabajoFinal/A-B_Testing/'
+
+alias la='ls -la'
+alias ll='ls -lF'
+alias lf='ls -F'
+alias l1='ls -1F'
+alias lla='ls -lAF'
+
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+alias home='cd ~'
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias cl="clear"
+
+alias g="git"
+alias o="open"
+alias o.="open ."
+alias s="subl"
+
+alias tower="gittower"
+
+alias x="exit"
+alias sleep='sudo shutdown -s now "A Dormir..."'
+alias reboot='sudo shutdown -r now "Reiniciando..."'
+alias poff='sudo shutdown -h now "Apagando..."'
+
+alias sta='sudo apachectl start'
+alias spa='sudo apachectl stop'
+alias rsa='sudo apachectl restart'
+
+alias stm='mysql.server start'
+alias spm='mysql.server stop'
+alias rsm='mysql.server restart'
+
+alias pstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias pstop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
+
+alias stam="sudo apachectl start; mysql.server start; terminal-notifier -title 'MAMP SERVERS' -subtitle 'MAMP Ready' -message 'Apache Server and MySQL Server Started' -sound 'Purr' -group 'mamp'"
+alias spam="sudo apachectl stop; mysql.server stop; terminal-notifier -title 'MAMP SERVERS' -subtitle 'MAMP Stopped' -message 'Apache Server and MySQL Server Stopped' -sound 'Purr' -group 'mamp'"
+
+alias fixowm='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;terminal-notifier -message "Open With has been rebuilt, Finder will relaunch"'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+
+# Flush Directory Service cache
+alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed'
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# One-Line Terminal Command to Refresh Launchpad Contents
+alias rlc='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+
+# Test Internet Connection Speed from the Command Line
+alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+
+# Play Chime sount
+alias chime='afplay /System/Library/CoreServices/PowerChime.app/Contents/Resources/connect_power.aif'
+
+# Raspberry Pi 3
+alias rpi='ssh pi@rpi3.local'
+alias rcdominguez='ssh cdominguez@rpi3.local'
+alias rroot='ssh root@rpi3.local'
+alias kh='subl ~/.ssh/known_hosts'
+alias rmkh=remove_known_hosts
+
+# Proyecto A/B Testing
+alias snd_css="scp ~/Documents/Bootcamp/_trabajoFinal/plugin/assets/css/abt.min.css pi@rpi3.local:~/www/api/abt.min.css"
+alias snd_js="scp ~/Documents/Bootcamp/_trabajoFinal/plugin/assets/js/abt.min.js pi@rpi3.local:~/www/api/abt.min.js"
+
+# Reset db
+alias rdb="rake db:drop db:create db:migrate db:seed"
+
+# .DS_Store
+alias rds="sudo find ./ -name ".DS_Store" -depth -exec rm {} \;"
